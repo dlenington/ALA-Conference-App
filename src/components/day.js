@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
+import axios from "axios";
 import Event from "./event";
 class Day extends Component {
+  componentDidMount() {}
   state = {};
   render() {
     return (
