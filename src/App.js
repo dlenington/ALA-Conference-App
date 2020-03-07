@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <NavBar />
-        <main class="container">
+        <main className="container">
           <Switch>
             <Route exact path="/" component={home} />
             {/* <AuthRoute exact path="/login" component={login} /> */}

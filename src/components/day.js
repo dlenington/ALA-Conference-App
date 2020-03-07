@@ -7,17 +7,18 @@ import Grid from "@material-ui/core/Grid";
 
 class Day extends Component {
   state = {
-    events: null
+    events: []
   };
   componentDidMount() {
     axios.get("/events").then(res => {
       this.setState({
-        events: res.data.events
+        events: res.data
       });
     });
   }
   render() {
     const { events } = this.state;
+
     let eventsMarkup = events.map(event => (
       <Event key={event.eventId} event={event} />
     ));
