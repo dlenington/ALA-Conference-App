@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
+import Day from "../components/day";
+
+//MUI stuff
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -70,13 +74,16 @@ export default function NavTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Page One
+        <Day day={"wed"} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Page Two
+        <Day day={"th"} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Page Three
+        <Day day={"fr"} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Day day={"sat"} />
       </TabPanel>
     </div>
   );

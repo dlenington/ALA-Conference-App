@@ -9,13 +9,10 @@ import Typography from "@material-ui/core/Typography";
 class Event extends Component {
   state = {};
   render() {
-    const { event: {
-      title,
-      body,
-      time,
-      location,
-      postId
-    }}
+    const {
+      event: { title, body, time, location, postId }
+    } = this.props;
+
     return (
       <Card>
         <CardContent>
