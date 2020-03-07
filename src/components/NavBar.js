@@ -14,7 +14,7 @@ class NavBar extends Component {
   render() {
     return (
       <AppBar>
-        <Toolbar class="nav-container">
+        <Toolbar className="nav-container">
           <Fragment>
             <Button color="inherit" component={Link} to="/login">
               Login
