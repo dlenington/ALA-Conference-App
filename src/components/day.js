@@ -2,16 +2,21 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import Event from "./event";
 class Day extends Component {
-  componentDidMount() {}
-  state = {};
+  state = {
+    events: null
+  };
+  componentDidMount() {
+    axios.get("/events").then(res => {
+      this.setState({
+        events: res.data.events
+      });
+    });
+  }
   render() {
-    return (
-      <Fragment>
-        <Event />
-        <Event />
-        <Event />
-      </Fragment>
-    );
+    const { events } = this.state;
+    return events.map(event => {
+      <Event key={event.eventId} event={event} />;
+    });
   }
 }
 
