@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EventDialog from "./eventDialog";
 
 //Mui Stuff
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,11 +34,7 @@ class Event extends Component {
             {time}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
+        <EventDialog />
       </Card>
     );
   }
