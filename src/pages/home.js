@@ -68,9 +68,11 @@ export default function NavTabs() {
           onChange={handleChange}
           aria-label="nav tabs example"
         >
-          <LinkTab label="Page One" href="/drafts" {...a11yProps(0)} />
-          <LinkTab label="Page Two" href="/trash" {...a11yProps(1)} />
-          <LinkTab label="Page Three" href="/spam" {...a11yProps(2)} />
+          <LinkTab label="Wed" href="/drafts" {...a11yProps(0)} />
+          <LinkTab label="Th" href="/trash" {...a11yProps(1)} />
+          <LinkTab label="Fr" href="/spam" {...a11yProps(2)} />
+          <LinkTab label="Sat" href="/spam" {...a11yProps(3)} />
+          <LinkTab label="Sun" href="/spam" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -82,8 +84,11 @@ export default function NavTabs() {
       <TabPanel value={value} index={2}>
         <Day day={"fr"} />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={3}>
         <Day day={"sat"} />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <Day day={"sun"} />
       </TabPanel>
     </div>
   );

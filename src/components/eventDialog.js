@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import axios from "axios";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "./myButton";
 
@@ -34,7 +35,8 @@ class EventDialog extends Component {
   state = {
     open: false,
     oldPath: "",
-    newPath: ""
+    newPath: "",
+    panels: []
   };
 
   componentDidMount() {
@@ -52,7 +54,15 @@ class EventDialog extends Component {
     window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
-    this.props.getEvent(this.props.eventId);
+
+    axios
+      .get(`/events/${eventId}`)
+      .then(res => {
+        this.setState({ panels: res.data.panels });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
@@ -60,32 +70,34 @@ class EventDialog extends Component {
   };
 
   render() {
-    const {
-      classes,
-      event: { section, title, venue, chair }
-    } = this.props;
+    const { classes } = this.props;
+    const { panels } = this.state;
 
-    const dialogMarkup = (
-      <Grid container spacing={2}>
-        <Grid item sm={7}>
-          <Typography color="primary" variant="h5">
-            {section}
-          </Typography>
-          <Typography color="primary" variant="h5">
-            {title}
-          </Typography>
-          <Typography color="primary" variant="h5">
-            {venue}
-          </Typography>
-          <Typography color="primary" variant="h5">
-            {chair}
-          </Typography>
+    const dialogMarkup = panels.map(panel => (
+      <Fragment>
+        <Grid container spacing={2}>
+          <Grid item sm={7}>
+            <Typography color="primary" variant="h5">
+              {panel.section}
+            </Typography>
+            <Typography color="textSecondary" variant="h6">
+              {panel.title}
+            </Typography>
+            <Typography color="textSecondary" variant="body2">
+              {panel.venue}
+            </Typography>
+            <Typography color="textSecondary" variant="body2">
+              Chair: {panel.chair}
+            </Typography>
+          </Grid>
+
+          <hr className={classes.invisibleSeparator} />
+
+          {/* {events.map => (event => { <Typography variant="body1">{event.presenter</Typography>} */}
         </Grid>
         <hr className={classes.invisibleSeparator} />
-        //render the presenters as comments
-        {/* {events.map => (event => { <Typography variant="body1">{event.presenter</Typography>} */}
-      </Grid>
-    );
+      </Fragment>
+    ));
     return (
       <Fragment>
         <MyButton
