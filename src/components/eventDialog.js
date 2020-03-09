@@ -44,8 +44,12 @@ class EventDialog extends Component {
   }
   handleOpen = () => {
     let oldPath = window.location.pathname;
-    const { eventId } = this.props;
-    const newPath = `/events/${eventId}`;
+    const { eventId, dayId } = this.props;
+    const newPath = `day/${dayId}/events/${eventId}`;
+
+    if (oldPath === newPath) oldPath = `/day/${dayId}`;
+
+    window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
     this.props.getEvent(this.props.eventId);

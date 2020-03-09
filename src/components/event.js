@@ -23,7 +23,7 @@ class Event extends Component {
   render() {
     const {
       classes,
-      event: { title, body, time, location, postId }
+      event: { title, time, eventId, dayId }
     } = this.props;
 
     return (
@@ -34,7 +34,11 @@ class Event extends Component {
             {time}
           </Typography>
         </CardContent>
-        <EventDialog />
+        <EventDialog
+          eventId={eventId}
+          dayId={dayId}
+          openDialog={this.props.openDialog}
+        />
       </Card>
     );
   }
