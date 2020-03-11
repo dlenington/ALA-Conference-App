@@ -56,7 +56,7 @@ class EventDialog extends Component {
     this.setState({ open: true, oldPath, newPath });
 
     axios
-      .get(`/events/${eventId}`)
+      .get(`/event/${eventId}`)
       .then(res => {
         this.setState({ panels: res.data.panels });
       })

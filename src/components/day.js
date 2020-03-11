@@ -10,7 +10,8 @@ class Day extends Component {
     events: []
   };
   componentDidMount() {
-    axios.get("/events").then(res => {
+    const { day } = this.props;
+    axios.get(`/events/${day}`).then(res => {
       this.setState({
         events: res.data
       });
