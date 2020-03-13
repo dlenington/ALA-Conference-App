@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "./myButton";
+import PanelDetails from "./panelDetails";
 
 //Mui stuff
 import Button from "@material-ui/core/Button";
@@ -46,10 +47,8 @@ class EventDialog extends Component {
   }
   handleOpen = () => {
     let oldPath = window.location.pathname;
-    const { eventId, dayId } = this.props;
-    const newPath = `day/${dayId}/events/${eventId}`;
-
-    if (oldPath === newPath) oldPath = `/day/${dayId}`;
+    const { eventId } = this.props;
+    const newPath = `/events/${eventId}`;
 
     window.history.pushState(null, null, newPath);
 
@@ -96,6 +95,7 @@ class EventDialog extends Component {
           {/* {events.map => (event => { <Typography variant="body1">{event.presenter</Typography>} */}
         </Grid>
         <hr className={classes.invisibleSeparator} />
+        <PanelDetails panelId={panel.panelId} />
       </Fragment>
     ));
     return (

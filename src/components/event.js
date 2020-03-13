@@ -34,11 +34,7 @@ class Event extends Component {
             {time}
           </Typography>
         </CardContent>
-        <EventDialog
-          eventId={eventId}
-          dayId={dayId}
-          openDialog={this.props.openDialog}
-        />
+        <EventDialog eventId={eventId} openDialog={this.props.openDialog} />
       </Card>
     );
   }
