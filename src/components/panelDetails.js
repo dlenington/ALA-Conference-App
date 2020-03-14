@@ -16,10 +16,13 @@ const styles = theme => ({
 
 class PanelDetails extends Component {
   state = { panelists: [] };
+
   componentDidMount() {
+    console.log(`panelDetails: ${this.props.panelId}`);
     axios
-      .get(`panel/${this.props.panelId}`)
+      .get(`/panel/${this.props.panelId}`)
       .then(res => {
+        console.log(res.data);
         this.setState({ panelists: res.data.panelists });
       })
       .catch(err => {

@@ -53,7 +53,7 @@ class EventDialog extends Component {
     window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
-
+    console.log(eventId);
     axios
       .get(`/event/${eventId}`)
       .then(res => {
