@@ -31,20 +31,26 @@ class PanelDetails extends Component {
   }
   render() {
     const { panelists } = this.state;
+    const { classes } = this.props;
     return (
       <Grid container>
         {panelists.map(panelist => {
-          const { name, details, panelistId } = panelist;
+          const { order, name, details, panelistId } = panelist;
           return (
             <Fragment key={panelistId}>
               <Grid item sm={12}>
-                <Grid item sm={2}>
+                <Grid item sm={12}>
                   <Typography variant="h5" color="primary">
+                    {order}
+                  </Typography>
+                  <Typography variant="h6" color="textSecondary">
                     {name}
                   </Typography>
                 </Grid>
-                <Grid item sm={9}>
-                  <Typography variant="body1">{details}</Typography>
+                <Grid item sm={12}>
+                  <Typography color="textSecondary" variant="body2">
+                    {details}
+                  </Typography>
                 </Grid>
               </Grid>
             </Fragment>

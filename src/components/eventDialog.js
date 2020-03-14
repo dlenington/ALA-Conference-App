@@ -89,13 +89,10 @@ class EventDialog extends Component {
               Chair: {panel.chair}
             </Typography>
           </Grid>
-
-          <hr className={classes.invisibleSeparator} />
-
-          {/* {events.map => (event => { <Typography variant="body1">{event.presenter</Typography>} */}
         </Grid>
         <hr className={classes.invisibleSeparator} />
         <PanelDetails panelId={panel.panelId} />
+        <hr className={classes.invisibleSeparator} />
       </Fragment>
     ));
     return (
