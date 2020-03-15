@@ -33,7 +33,7 @@ class eventDetails extends Component {
         <Event event={event} openDialog />
       );
 
-    return <Grid container>{eventMarkup}</Grid>;
+    return <Fragment>{eventMarkup}</Fragment>;
   }
 }
 
