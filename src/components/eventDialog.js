@@ -42,13 +42,17 @@ class EventDialog extends Component {
 
   componentDidMount() {
     if (this.props.openDialog) {
+      console.log("true");
       this.handleOpen();
     }
+    console.log("false");
   }
   handleOpen = () => {
     let oldPath = window.location.pathname;
     const { eventId } = this.props;
     const newPath = `/events/${eventId}`;
+
+    if (oldPath === newPath) oldPath = `/`;
 
     window.history.pushState(null, null, newPath);
 

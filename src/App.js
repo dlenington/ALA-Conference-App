@@ -5,6 +5,7 @@ import themeFile from "./util/theme";
 import { createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./components/NavBar";
 import home from "./pages/home";
+import eventDetails from "./components/eventDetails";
 import "./App.css";
 
 const theme = createMuiTheme(themeFile);
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path="/" component={home} />
             {/* <AuthRoute exact path="/login" component={login} /> */}
             {/* <AuthRoute exact path="/signup" component={signup} /> */}
+            <Route exact path="/events/:eventId" component={eventDetails} />
           </Switch>
         </main>
       </MuiThemeProvider>
