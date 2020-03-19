@@ -43,11 +43,78 @@ class Signup extends Component {
     };
     axios.post("/signup", newUserData).then(res => {});
   };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
   render() {
+    const { classes } = this.props;
+    const { errors } = this.state;
+
     return (
-      <div>
-        <p>Signup</p>
-      </div>
+      <Grid container className={classes.form}>
+        <Grid item sm />
+        <Grid item sm>
+          <img alt="" className={classes.image} />
+          <Typography variant="h2" className={classes.pageTitle}>
+            Signup
+          </Typography>
+          <form noValidate onSubmit={this.handleSubmit}>
+            <TextField
+              id="email"
+              name="email"
+              type="email"
+              label="Email"
+              className={classes.textField}
+              helperText={errors.email}
+              error={errors.errors ? true : false}
+              value={this.state.email}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="password"
+              name="password"
+              type="password"
+              label="Password"
+              className={classes.textField}
+              helperText={errors.password}
+              error={errors.errors ? true : false}
+              value={this.state.password}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="confirmPassword"
+              name="confirmPassword"
+              type="-assword"
+              label="Confirm Password"
+              className={classes.textField}
+              helperText={errors.confirmPassword}
+              error={errors.errors ? true : false}
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            {errors.general && (
+              <Typography variant="body2" className={classes.customError}>
+                {errors.general}
+              </Typography>
+            )}
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              disabled={loading}
+            >
+              Signup
+            </Button>
+          </form>
+        </Grid>
+      </Grid>
     );
   }
 }
