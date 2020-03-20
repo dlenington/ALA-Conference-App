@@ -9,6 +9,15 @@ export default {
   },
 
   spreadThis: {
+    form: {
+      textAlign: "center"
+    },
+    pageTitle: {
+      margin: "10px auto 10px auto"
+    },
+    textField: {
+      margin: "10px auto 10px auto"
+    },
     button: {
       marginTop: 20,
       position: "relative"
