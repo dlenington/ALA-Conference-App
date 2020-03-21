@@ -46,7 +46,11 @@ class Signup extends Component {
       confirmPassword: this.state.confirmPassword,
       handle: this.state.handle
     };
-    axios.post("/signup", newUserData).then(res => {});
+    axios.post("/signup", newUserData).then(res => {
+      this.setAuthorizationHeader(res.data.token);
+      // localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
+      this.props.history.push("/");
+    });
   };
 
   handleChange = event => {
@@ -94,12 +98,24 @@ class Signup extends Component {
             <TextField
               id="confirmPassword"
               name="confirmPassword"
-              type="-assword"
+              type="password"
               label="Confirm Password"
               className={classes.textField}
               helperText={errors.confirmPassword}
               error={errors.errors ? true : false}
               value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="handle"
+              name="handle"
+              type="text"
+              label="User Handle"
+              className={classes.textField}
+              helperText={errors.handle}
+              error={errors.errors ? true : false}
+              value={this.state.handle}
               onChange={this.handleChange}
               fullWidth
             />
@@ -118,6 +134,7 @@ class Signup extends Component {
             </Button>
           </form>
         </Grid>
+        <Grid item sm />
       </Grid>
     );
   }
