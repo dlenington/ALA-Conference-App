@@ -21,7 +21,7 @@ const styles = theme => ({
     marginTop: 20,
     position: "relative"
   }
-})
+});
 
 class Login extends Component {
   state = {
@@ -32,18 +32,18 @@ class Login extends Component {
 
   loginUser = userData => {
     axios
-    .post("/login", userData)
-    .then(res => {
-      const FBIdToken = `Bearer ${res.data.token}`;
-      localStorage.setItem("FBIdToken", FBIdToken);
-      axios.defaults.headers.common["Authorization"] = FBIdToken;
-      this.props.history.push("/");
-    })
-    .catch(err => {
-    this.setState({
-      errors: err.response.data
-    });
-    });
+      .post("/login", userData)
+      .then(res => {
+        const FBIdToken = `Bearer ${res.data.token}`;
+        localStorage.setItem("FBIdToken", FBIdToken);
+        axios.defaults.headers.common["Authorization"] = FBIdToken;
+        this.props.history.push("/");
+      })
+      .catch(err => {
+        this.setState({
+          errors: err.response.data
+        });
+      });
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -52,7 +52,7 @@ class Login extends Component {
       password: this.state.password
     };
     this.loginUser(userData);
-  }
+  };
 
   handleChange = event => {
     this.setState({
@@ -64,14 +64,51 @@ class Login extends Component {
     const { classes } = this.props;
     const { errors } = this.state;
     return (
-      <Grid item sm />
-      <Grid item sm >
-<Typography variant="h2">Login</Typography>
-<form noValidate onSubmit={this.handleSubmit}>
-  
-</form>
+      <Grid container className={classes.form}>
+        <Grid item sm />
+        <Grid item sm>
+          <Typography variant="h2">Login</Typography>
+          <form noValidate onSubmit={this.handleSubmit}>
+            <TextField
+              id="email"
+              name="email"
+              type="email"
+              label="Email"
+              className={classes.textField}
+              helperText={errors.email}
+              error={errors.email ? true : false}
+              value={this.state.email}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="password"
+              name="password"
+              type="password"
+              label="Password"
+              className={classes.textField}
+              helperText={errors.password}
+              error={errors.password ? true : false}
+              value={this.state.password}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Login
+            </Button>
+            <br />
+            <small>
+              No account? Sign up <Link to="/signup">here</Link>
+            </small>
+          </form>
+        </Grid>
+        <Grid item sm />
       </Grid>
-      <Grid item sm />
     );
   }
 }
