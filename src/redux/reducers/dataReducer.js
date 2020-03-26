@@ -31,5 +31,8 @@ export default function(state = initial, action) {
       if (state.post.postId === action.payload.postId) {
         state.event.likeCount = action.payload.likeCount;
       }
+      return {
+        ...state
+      };
   }
 }
