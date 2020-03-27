@@ -28,11 +28,13 @@ export default function(state = initial, action) {
         event => event.eventId === action.payload.eventId
       );
       state.events[index] = action.payload;
-      if (state.post.postId === action.payload.postId) {
+      if (state.event.eventId === action.payload.eventId) {
         state.event.likeCount = action.payload.likeCount;
       }
       return {
         ...state
       };
+    default:
+      return state;
   }
 }
