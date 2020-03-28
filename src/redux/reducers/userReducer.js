@@ -2,8 +2,7 @@ const initialState = {
   authenticated: false,
   loading: false,
   credentials: {},
-  likes: [],
-  notifications: []
+  likes: []
 };
 
 export default function(state = initialState, action) {
@@ -37,5 +36,15 @@ export default function(state = initialState, action) {
           }
         ]
       };
+    case UNLIKE_EVENT:
+      return {
+        ...state,
+        likes: state.likes.filter(
+          like => like.eventId !== action.payload.postId
+        )
+      };
+
+    default:
+      return state;
   }
 }
