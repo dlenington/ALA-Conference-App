@@ -22,7 +22,7 @@ export default function(state = initial, action) {
     case SET_EVENTS:
       return {
         ...state,
-        posts: action.payload,
+        events: action.payload,
         loading: false
       };
     case SET_POST:
