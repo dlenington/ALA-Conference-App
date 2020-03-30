@@ -34,5 +34,14 @@ export const getEvent = postId => dispatch => {
   dispatch({
     type: LOADING_UI
   });
-  axios.get(`/events`);
+  axios
+    .get(`/events/${eventId}`)
+    .then(res => {
+      dispatch({
+        type: SET_EVENT,
+        payload: res.data
+      });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
 };
