@@ -29,3 +29,10 @@ export const getEvents = () => dispatch => {
       });
     });
 };
+
+export const getEvent = postId => dispatch => {
+  dispatch({
+    type: LOADING_UI
+  });
+  axios.get(`/events`);
+};
