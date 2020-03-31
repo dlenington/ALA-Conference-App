@@ -45,3 +45,15 @@ export const getEvent = postId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const likeEvent = eventId => dispatch => {
+  axios
+    .get(`/events/${eventId}/like`)
+    .then(res => {
+      dispatch({
+        type: LIKE_EVENT,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
