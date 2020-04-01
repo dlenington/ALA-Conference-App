@@ -57,3 +57,15 @@ export const likeEvent = eventId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const unlikePost = postId => dispatch => {
+  axios
+    .get(`/events/${eventId}/unlike`)
+    .then(res => {
+      dispatch({
+        type: UNLIKE_EVENT,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
