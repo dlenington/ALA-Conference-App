@@ -23,3 +23,16 @@ export const logoutUser = () => (dispatch) => {
   delete axios.defaults.headers.common["Authorization"];
   dispatch({ type: SET_UNAUTHENTICATED });
 };
+
+export const getUserData = () => (dispatch) => {
+  dispatch({ type: LOADING_USER });
+  axios
+    .get("/user")
+    .then((res) => {
+      dispatch({
+        type: SET_USER,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
