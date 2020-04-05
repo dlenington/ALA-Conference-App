@@ -54,3 +54,13 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       });
     });
 };
+
+const setAuthorizationHeader = (token) => {
+  const FBIdtoken = `Bearer ${token}`;
+  localStorage.setItem("FBIToken", FBIdToken);
+  axios.defaults.headers.common["Authorization"] = FBIdtoken;
+};
+
+export const setAdmin = () => (dispatch) => {
+  dispatch({ type: SET_ADMIN });
+};
