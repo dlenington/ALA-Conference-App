@@ -7,69 +7,69 @@ import {
   CLEAR_ERRORS,
   LOADING_UI,
   SET_EVENT,
-  STOP_LOADING_UI
+  STOP_LOADING_UI,
 } from "../types";
 import axios from "axios";
 
-export const getEvents = () => dispatch => {
+export const getEvents = (day) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get("/events")
-    .then(res => {
+    .get(`/events/${day}`)
+    .then((res) => {
       dispatch({
         type: SET_EVENTS,
-        payload: res.data
+        payload: res.data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         //clear out posts
         type: SET_POSTS,
-        payload: []
+        payload: [],
       });
     });
 };
 
-export const getEvent = postId => dispatch => {
+export const getEvent = (eventId) => (dispatch) => {
   dispatch({
-    type: LOADING_UI
+    type: LOADING_UI,
   });
   axios
     .get(`/events/${eventId}`)
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: SET_EVENT,
-        payload: res.data
+        payload: res.data,
       });
       dispatch({ type: STOP_LOADING_UI });
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const likeEvent = eventId => dispatch => {
+export const likeEvent = (eventId) => (dispatch) => {
   axios
     .get(`/events/${eventId}/like`)
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: LIKE_EVENT,
-        payload: res.data
+        payload: res.data,
       });
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const unlikePost = postId => dispatch => {
+export const unlikePost = (postId) => (dispatch) => {
   axios
     .get(`/events/${eventId}/unlike`)
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: UNLIKE_EVENT,
-        payload: res.data
+        payload: res.data,
       });
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const clearErrors = () => dispatch => {
+export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };

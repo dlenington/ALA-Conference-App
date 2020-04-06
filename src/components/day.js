@@ -1,26 +1,26 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import Event from "./event";
+import PropTypes from "prop-types";
+
+//Redux stuff
+import { getEvents } from "../redux/actions/dataActions";
+import { connect } from "react-redux";
 
 //Mui Stuff
 import Grid from "@material-ui/core/Grid";
 
 class Day extends Component {
   state = {
-    events: []
+    events: [],
   };
   componentDidMount() {
-    const { day } = this.props;
-    axios.get(`/events/${day}`).then(res => {
-      this.setState({
-        events: res.data
-      });
-    });
+    this.props.getEvents(this.props.day);
   }
   render() {
     const { events } = this.state;
 
-    let eventsMarkup = events.map(event => (
+    let eventsMarkup = events.map((event) => (
       <Event key={event.eventId} event={event} />
     ));
     return (
@@ -33,4 +33,9 @@ class Day extends Component {
   }
 }
 
-export default Day;
+Day.propTypes = {
+  getEvents: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps, { getEvents })(Day);
