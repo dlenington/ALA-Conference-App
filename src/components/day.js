@@ -11,14 +11,11 @@ import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 
 class Day extends Component {
-  state = {
-    events: [],
-  };
   componentDidMount() {
     this.props.getEvents(this.props.day);
   }
   render() {
-    const { events } = this.state;
+    const { events } = this.props.data;
 
     let eventsMarkup = events.map((event) => (
       <Event key={event.eventId} event={event} />
