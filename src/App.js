@@ -4,6 +4,12 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import themeFile from "./util/theme";
 import { createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./components/NavBar";
+
+//Redux
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+//Pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
@@ -17,15 +23,17 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <NavBar />
-        <main className="container">
-          <Switch>
-            <Route exact path="/" component={home} />
-            <Route exact path="/login" component={login} />
-            <Route exact path="/signup" component={signup} />
-            <Route exact path="/events/:eventId" component={eventDetails} />
-          </Switch>
-        </main>
+        <Provider store={store}>
+          <NavBar />
+          <main className="container">
+            <Switch>
+              <Route exact path="/" component={home} />
+              <Route exact path="/login" component={login} />
+              <Route exact path="/signup" component={signup} />
+              <Route exact path="/events/:eventId" component={eventDetails} />
+            </Switch>
+          </main>
+        </Provider>
       </MuiThemeProvider>
     );
   }

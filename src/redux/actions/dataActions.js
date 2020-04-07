@@ -24,7 +24,7 @@ export const getEvents = (day) => (dispatch) => {
     .catch((err) => {
       dispatch({
         //clear out posts
-        type: SET_POSTS,
+        type: SET_EVENTS,
         payload: [],
       });
     });
@@ -58,7 +58,7 @@ export const likeEvent = (eventId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const unlikePost = (postId) => (dispatch) => {
+export const unlikePost = (eventId) => (dispatch) => {
   axios
     .get(`/events/${eventId}/unlike`)
     .then((res) => {

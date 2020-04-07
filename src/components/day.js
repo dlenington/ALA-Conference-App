@@ -35,4 +35,8 @@ Day.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
 export default connect(mapStateToProps, { getEvents })(Day);
