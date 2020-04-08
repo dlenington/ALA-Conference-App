@@ -12,7 +12,8 @@ import Grid from "@material-ui/core/Grid";
 
 class Day extends Component {
   componentDidMount() {
-    this.props.getEvents(this.props.day);
+    const { day } = this.props;
+    this.props.getEvents(day);
   }
   render() {
     const { events } = this.props.data;
