@@ -16,20 +16,20 @@ import Typography from "@material-ui/core/Typography";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import CloseIcon from "@material-ui/icons/Close";
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
   dialogContent: {
-    padding: 20
+    padding: 20,
   },
   closeButton: {
     position: "absolute",
-    left: "90%"
+    left: "90%",
   },
   spinnerDiv: {
     textAlign: "center",
     marginTop: 50,
-    marginBottom: 50
-  }
+    marginBottom: 50,
+  },
 });
 
 class EventDialog extends Component {
@@ -37,7 +37,7 @@ class EventDialog extends Component {
     open: false,
     oldPath: "",
     newPath: "",
-    panels: []
+    panels: [],
   };
 
   componentDidMount() {
@@ -61,10 +61,10 @@ class EventDialog extends Component {
 
     axios
       .get(`/event/${eventId}`)
-      .then(res => {
+      .then((res) => {
         this.setState({ panels: res.data.panels });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -77,7 +77,7 @@ class EventDialog extends Component {
     const { classes } = this.props;
     const { panels } = this.state;
 
-    const dialogMarkup = panels.map(panel => (
+    const dialogMarkup = panels.map((panel) => (
       <Fragment>
         <Grid container spacing={2}>
           <Grid item sm={7}>
@@ -133,5 +133,21 @@ class EventDialog extends Component {
     );
   }
 }
+PaintingDialog.propTypes = {
+  getEvent: PropTypes.function.isRequired,
+  eventId: PropTypes.string.isRequired,
+  event: PropTypes.object.isRequired,
+};
 
-export default withStyles(styles)(EventDialog);
+const mapStateToProps = (state) => ({
+  event: state.data.event,
+});
+
+const mapActionsToProps = {
+  getEvent,
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(EventDialog));
