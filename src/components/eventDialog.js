@@ -16,6 +16,10 @@ import Typography from "@material-ui/core/Typography";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import CloseIcon from "@material-ui/icons/Close";
 
+//Redux stuff
+import { connect } from "react-redux";
+import { getEvent } from "../redux/actions/dataActions";
+
 const styles = (theme) => ({
   ...theme.spreadThis,
   dialogContent: {
