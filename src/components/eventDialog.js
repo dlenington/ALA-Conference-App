@@ -137,7 +137,7 @@ class EventDialog extends Component {
     );
   }
 }
-PaintingDialog.propTypes = {
+EventDialog.propTypes = {
   getEvent: PropTypes.function.isRequired,
   eventId: PropTypes.string.isRequired,
   event: PropTypes.object.isRequired,
