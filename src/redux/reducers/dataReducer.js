@@ -28,7 +28,7 @@ export default function (state = initialState, action) {
     case SET_EVENT:
       return {
         ...state,
-        post: action.payload,
+        panels: action.payload,
       };
     case LIKE_EVENT:
     case UNLIKE_EVENT:

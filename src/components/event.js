@@ -14,8 +14,8 @@ const styles = {
   card: { position: "relative", display: "flex", marginBottom: 20 },
   content: {
     padding: 25,
-    objectFit: "cover"
-  }
+    objectFit: "cover",
+  },
 };
 
 class Event extends Component {
@@ -23,7 +23,7 @@ class Event extends Component {
   render() {
     const {
       classes,
-      event: { title, time, eventId, dayId }
+      event: { title, time, eventId },
     } = this.props;
 
     return (
