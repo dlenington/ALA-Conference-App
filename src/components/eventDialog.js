@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "./myButton";
@@ -63,14 +64,7 @@ class EventDialog extends Component {
 
     this.setState({ open: true, oldPath, newPath });
 
-    axios
-      .get(`/event/${eventId}`)
-      .then((res) => {
-        this.setState({ panels: res.data.panels });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.props.getEvent(eventId);
   };
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
@@ -138,7 +132,7 @@ class EventDialog extends Component {
   }
 }
 EventDialog.propTypes = {
-  getEvent: PropTypes.function.isRequired,
+  getEvent: PropTypes.func.isRequired,
   eventId: PropTypes.string.isRequired,
   panels: PropTypes.object.isRequired,
 };
