@@ -35,7 +35,7 @@ export const getEvent = (eventId) => (dispatch) => {
     type: LOADING_UI,
   });
   axios
-    .get(`/events/${eventId}`)
+    .get(`/event/${eventId}`)
     .then((res) => {
       dispatch({
         type: SET_EVENT,

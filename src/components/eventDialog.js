@@ -42,7 +42,6 @@ class EventDialog extends Component {
     open: false,
     oldPath: "",
     newPath: "",
-    panels: [],
   };
 
   componentDidMount() {
@@ -136,7 +135,7 @@ EventDialog.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  panels: state.data.panels,
+  panels: state.panels,
 });
 
 const mapActionsToProps = {
