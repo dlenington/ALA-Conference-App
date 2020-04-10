@@ -47,7 +47,6 @@ class EventDialog extends Component {
 
   componentDidMount() {
     if (this.props.openDialog) {
-      console.log("true");
       this.handleOpen();
     }
     console.log("false");
@@ -73,7 +72,7 @@ class EventDialog extends Component {
 
   render() {
     const { classes } = this.props;
-    const { panels } = this.state.data;
+    const { panels } = this.props.data;
 
     const dialogMarkup = panels.map((panel) => (
       <Fragment>
@@ -133,7 +132,6 @@ class EventDialog extends Component {
 }
 EventDialog.propTypes = {
   getEvent: PropTypes.func.isRequired,
-  eventId: PropTypes.string.isRequired,
   panels: PropTypes.object.isRequired,
 };
 
