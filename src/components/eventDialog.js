@@ -62,7 +62,7 @@ class EventDialog extends Component {
 
     this.setState({ open: true, oldPath, newPath });
 
-    this.props.getEvent(eventId);
+    this.props.getEvent(this.props.eventId);
   };
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
@@ -131,10 +131,11 @@ class EventDialog extends Component {
 EventDialog.propTypes = {
   getEvent: PropTypes.func.isRequired,
   panels: PropTypes.object.isRequired,
+  eventId: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  panels: state.panels,
+  panels: state.data.panels,
 });
 
 const mapActionsToProps = {
