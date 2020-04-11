@@ -70,8 +70,7 @@ class EventDialog extends Component {
   };
 
   render() {
-    const { classes } = this.props;
-    const { panels } = this.props.data;
+    const { classes, panels } = this.props;
 
     const dialogMarkup = panels.map((panel) => (
       <Fragment>
