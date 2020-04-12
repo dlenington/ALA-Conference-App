@@ -135,7 +135,7 @@ EventDialog.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  panels: state.data.panels,
+  panels: state.data.event.panels,
 });
 
 const mapActionsToProps = {
