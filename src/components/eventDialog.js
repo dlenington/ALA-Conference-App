@@ -130,7 +130,7 @@ class EventDialog extends Component {
 }
 EventDialog.propTypes = {
   getEvent: PropTypes.func.isRequired,
-  panels: PropTypes.object.isRequired,
+  panels: PropTypes.array.isRequired,
   eventId: PropTypes.string.isRequired,
 };
 
