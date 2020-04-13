@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         event: {
-          panels: [...action.payload],
+          ...action.payload,
         },
       };
     case LIKE_EVENT:
