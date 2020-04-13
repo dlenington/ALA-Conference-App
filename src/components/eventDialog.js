@@ -70,7 +70,10 @@ class EventDialog extends Component {
   };
 
   render() {
-    const { classes, panels } = this.props;
+    const {
+      classes,
+      event: { panels },
+    } = this.props;
 
     const dialogMarkup = panels.map((panel) => (
       <Fragment>
@@ -130,12 +133,12 @@ class EventDialog extends Component {
 }
 EventDialog.propTypes = {
   getEvent: PropTypes.func.isRequired,
-  panels: PropTypes.array.isRequired,
+  event: PropTypes.object.isRequired,
   eventId: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  panels: state.data.event.panels,
+  event: state.data.event,
 });
 
 const mapActionsToProps = {
