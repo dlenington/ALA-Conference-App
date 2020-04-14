@@ -46,9 +46,10 @@ class EventDialog extends Component {
 
   componentDidMount() {
     if (this.props.openDialog) {
+      console.log("Handling open");
       this.handleOpen();
     }
-    console.log("false");
+    console.log("MOUNTED");
   }
   handleOpen = () => {
     let oldPath = window.location.pathname;
