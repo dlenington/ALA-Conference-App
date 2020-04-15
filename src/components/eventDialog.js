@@ -68,12 +68,9 @@ class EventDialog extends Component {
   };
 
   render() {
-    const {
-      classes,
-      event: { panels },
-    } = this.props;
+    const { classes, event } = this.props;
 
-    const dialogMarkup = panels.map((panel) => (
+    const dialogMarkup = event.panels.map((panel) => (
       <Fragment>
         <Grid container spacing={2}>
           <Grid item sm={7}>
