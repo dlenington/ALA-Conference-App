@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 
 export const getEvents = (day) => (dispatch) => {
-  dispatch({ type: LOADING_DATA });
+  // dispatch({ type: LOADING_DATA });
   axios
     .get(`/events/${day}`)
     .then((res) => {
@@ -31,9 +31,9 @@ export const getEvents = (day) => (dispatch) => {
 };
 
 export const getEvent = (eventId) => (dispatch) => {
-  dispatch({
-    type: LOADING_UI,
-  });
+  // dispatch({
+  //   type: LOADING_UI,
+  // });
   axios
     .get(`/event/${eventId}`)
     .then((res) => {
@@ -41,7 +41,7 @@ export const getEvent = (eventId) => (dispatch) => {
         type: SET_EVENT,
         payload: res.data,
       });
-      dispatch({ type: STOP_LOADING_UI });
+      // dispatch({ type: STOP_LOADING_UI });
     })
     .catch((err) => console.log(err));
 };
