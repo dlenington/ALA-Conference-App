@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EventDialog from "./eventDialog";
+import PropTypes from "prop-types";
 
 //Mui Stuff
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,6 +10,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+
+//Redux
+import { connect } from "react-redux";
 
 const styles = {
   card: { position: "relative", display: "flex", marginBottom: 20 },
@@ -39,5 +43,11 @@ class Event extends Component {
     );
   }
 }
+
+Event.propTypes = {
+  event: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool,
+};
 
 export default withStyles(styles)(Event);
