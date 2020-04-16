@@ -43,7 +43,7 @@ class Event extends Component {
     );
   }
 }
-
+// TODO: Compare database responses of POW app to ALA when calling getEvent(s) and getPost(s);
 Event.propTypes = {
   event: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
