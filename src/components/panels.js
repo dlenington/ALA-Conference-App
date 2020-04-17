@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PanelDetails from "./panelDetails";
-
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 //Redux
 import { connect } from "react-redux";
 
 class Panels extends Component {
   state = {};
   render() {
-    const dialogMarkup = event.panels.map((panel) => (
+    const { panels } = this.props;
+
+    const dialogMarkup = panels.map((panel) => (
       <Fragment>
         <Grid container spacing={2}>
           <Grid item sm={7}>
