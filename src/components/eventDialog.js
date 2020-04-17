@@ -4,6 +4,7 @@ import axios from "axios";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "./myButton";
 import PanelDetails from "./panelDetails";
+import Panels from "./panels";
 
 //Mui stuff
 import Button from "@material-ui/core/Button";
@@ -71,27 +72,7 @@ class EventDialog extends Component {
     const { classes, event } = this.props;
 
     const dialogMarkup = event.panels.map((panel) => (
-      <Fragment>
-        <Grid container spacing={2}>
-          <Grid item sm={7}>
-            <Typography color="primary" variant="h5">
-              {panel.section}
-            </Typography>
-            <Typography color="textSecondary" variant="h6">
-              {panel.title}
-            </Typography>
-            <Typography color="textSecondary" variant="body2">
-              {panel.venue}
-            </Typography>
-            <Typography color="textSecondary" variant="body2">
-              Chair: {panel.chair}
-            </Typography>
-          </Grid>
-        </Grid>
-        <hr className={classes.invisibleSeparator} />
-        <PanelDetails panelId={panel.panelId} />
-        <hr className={classes.invisibleSeparator} />
-      </Fragment>
+      
     ));
     return (
       <Fragment>
@@ -119,7 +100,8 @@ class EventDialog extends Component {
             <CloseIcon />
           </MyButton>
           <DialogContent className={classes.dialogContent}>
-            {dialogMarkup}
+            {/* {dialogMarkup} */}
+            <Panels/>
           </DialogContent>
         </Dialog>
       </Fragment>
