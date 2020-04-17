@@ -69,11 +69,14 @@ class EventDialog extends Component {
   };
 
   render() {
-    const { classes, event } = this.props;
+    const {
+      classes,
+      event: { panels },
+    } = this.props;
 
-    const dialogMarkup = event.panels.map((panel) => (
-      
-    ));
+    // const dialogMarkup = event.panels.map((panel) => (
+
+    // ));
     return (
       <Fragment>
         <MyButton
@@ -101,7 +104,7 @@ class EventDialog extends Component {
           </MyButton>
           <DialogContent className={classes.dialogContent}>
             {/* {dialogMarkup} */}
-            <Panels/>
+            <Panels panels={panels} />
           </DialogContent>
         </Dialog>
       </Fragment>
