@@ -1,13 +1,9 @@
 import {
   SET_EVENTS,
-  LOADING_DATA,
   LIKE_EVENT,
   UNLIKE_EVENT,
-  SET_ERRORS,
   CLEAR_ERRORS,
-  LOADING_UI,
   SET_EVENT,
-  STOP_LOADING_UI,
 } from "../types";
 import axios from "axios";
 
