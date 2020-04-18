@@ -1,15 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import PanelDetails from "./panelDetails";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
+
 //Redux
 import { connect } from "react-redux";
+
+const styles = (theme) => ({
+  ...theme.spreadThis,
+});
 
 class Panels extends Component {
   state = {};
   render() {
-    const { panels } = this.props;
+    const { panels, classes } = this.props;
 
     const dialogMarkup = panels.map((panel) => (
       <Fragment>
@@ -38,4 +44,4 @@ class Panels extends Component {
   }
 }
 
-export default Panels;
+export default withStyles(styles)(Panels);
