@@ -12,6 +12,7 @@ export const getEvents = (day) => (dispatch) => {
   axios
     .get(`/events/${day}`)
     .then((res) => {
+      console.log(res);
       dispatch({
         type: SET_EVENTS,
         payload: res.data,
@@ -33,6 +34,7 @@ export const getEvent = (eventId) => (dispatch) => {
   axios
     .get(`/event/${eventId}`)
     .then((res) => {
+      console.log(`getEvent ${res}`);
       dispatch({
         type: SET_EVENT,
         payload: res.data,

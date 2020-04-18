@@ -45,9 +45,12 @@ class Event extends Component {
 }
 
 Event.propTypes = {
-  event: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   openDialog: PropTypes.bool,
 };
 
-export default withStyles(styles)(Event);
+const mapStateToProps = (state) => ({
+  event: state.data.event,
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(Event));

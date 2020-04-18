@@ -53,7 +53,9 @@ class EventDialog extends Component {
   handleOpen = () => {
     let oldPath = window.location.pathname;
     console.log(`oldpath ${oldPath}`);
-    const { eventId } = this.props;
+    const {
+      event: { eventId },
+    } = this.props;
     const newPath = `/events/${eventId}`;
     console.log(`newPath ${newPath}`);
     if (oldPath === newPath) oldPath = "/";
@@ -61,7 +63,7 @@ class EventDialog extends Component {
     window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
-    this.props.getEvent(this.props.eventId);
+    // this.props.getEvent(this.props.event.eventId);
   };
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
@@ -74,9 +76,29 @@ class EventDialog extends Component {
       event: { panels },
     } = this.props;
 
-    // const dialogMarkup = event.panels.map((panel) => (
-
-    // ));
+    const dialogMarkup = panels.map((panel) => (
+      <Fragment>
+        <Grid container spacing={2}>
+          <Grid item sm={7}>
+            <Typography color="primary" variant="h5">
+              {panel.section}
+            </Typography>
+            <Typography color="textSecondary" variant="h6">
+              {panel.title}
+            </Typography>
+            <Typography color="textSecondary" variant="body2">
+              {panel.venue}
+            </Typography>
+            <Typography color="textSecondary" variant="body2">
+              Chair: {panel.chair}
+            </Typography>
+          </Grid>
+        </Grid>
+        <hr className={classes.invisibleSeparator} />
+        <PanelDetails panelId={panel.panelId} />
+        <hr className={classes.invisibleSeparator} />
+      </Fragment>
+    ));
     return (
       <Fragment>
         <MyButton
@@ -103,8 +125,7 @@ class EventDialog extends Component {
             <CloseIcon />
           </MyButton>
           <DialogContent className={classes.dialogContent}>
-            {/* {dialogMarkup} */}
-            <Panels panels={panels} />
+            {dialogMarkup}
           </DialogContent>
         </Dialog>
       </Fragment>
@@ -112,9 +133,8 @@ class EventDialog extends Component {
   }
 }
 EventDialog.propTypes = {
-  getEvent: PropTypes.func.isRequired,
-  event: PropTypes.object.isRequired,
-  eventId: PropTypes.string.isRequired,
+  // getEvent: PropTypes.func.isRequired,
+  // eventId: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

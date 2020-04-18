@@ -7,18 +7,18 @@ import Home from "../pages/home";
 //Mui Stuff
 import Grid from "@material-ui/core/Grid";
 
-class eventDetails extends Component {
+//Redux Stuff
+import { connect } from "react-redux";
+import { getEvent } from "../redux/actions/dataActions";
+
+class EventDetails extends Component {
   state = { event: null, eventIdParam: null };
 
   componentDidMount() {
     const eventId = this.props.match.params.eventId;
     if (eventId) this.setState({ eventIdParam: eventId });
 
-    axios.get(`/event/${eventId}`).then(res => {
-      this.setState({
-        event: res.data
-      });
-    });
+    this.props.getEvent(eventId);
   }
 
   render() {
@@ -37,4 +37,16 @@ class eventDetails extends Component {
   }
 }
 
-export default eventDetails;
+EventDetails.propTypes = {
+  getEvent: PropTypes.func.isRequired,
+};
+
+// const mapStateToProps = (state) => ({
+//   event: state.data.event
+// });
+
+const mapActionsToProps = {
+  getEvent,
+};
+
+export default connect(mapActionsToProps)(EventDetails);
