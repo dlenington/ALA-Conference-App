@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 
 //Redux
 import { connect } from "react-redux";
+import { getEvent } from "../redux/actions/dataActions";
 
 const styles = {
   card: { position: "relative", display: "flex", marginBottom: 20 },
@@ -24,6 +25,11 @@ const styles = {
 
 class Event extends Component {
   state = {};
+
+  componentDidMount() {
+    this.props.getEvent(this.props.event.eventId);
+  }
+
   render() {
     const {
       classes,
@@ -47,10 +53,15 @@ class Event extends Component {
 Event.propTypes = {
   classes: PropTypes.object.isRequired,
   openDialog: PropTypes.bool,
+  getEvent: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  event: state.data.event,
+// const mapStateToProps = (state) => ({
+//   event: state.data.event,
+// });
+
+const mapActionsToProps = (state) => ({
+  getEvent,
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(Event));
+export default connect(mapActionsToProps)(withStyles(styles)(Event));

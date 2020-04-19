@@ -76,29 +76,32 @@ class EventDialog extends Component {
       event: { panels },
     } = this.props;
 
-    const dialogMarkup = panels.map((panel) => (
-      <Fragment>
-        <Grid container spacing={2}>
-          <Grid item sm={7}>
-            <Typography color="primary" variant="h5">
-              {panel.section}
-            </Typography>
-            <Typography color="textSecondary" variant="h6">
-              {panel.title}
-            </Typography>
-            <Typography color="textSecondary" variant="body2">
-              {panel.venue}
-            </Typography>
-            <Typography color="textSecondary" variant="body2">
-              Chair: {panel.chair}
-            </Typography>
+    if (panels) {
+      const dialogMarkup = panels.map((panel) => (
+        <Fragment>
+          <Grid container spacing={2}>
+            <Grid item sm={7}>
+              <Typography color="primary" variant="h5">
+                {panel.section}
+              </Typography>
+              <Typography color="textSecondary" variant="h6">
+                {panel.title}
+              </Typography>
+              <Typography color="textSecondary" variant="body2">
+                {panel.venue}
+              </Typography>
+              <Typography color="textSecondary" variant="body2">
+                Chair: {panel.chair}
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
-        <hr className={classes.invisibleSeparator} />
-        <PanelDetails panelId={panel.panelId} />
-        <hr className={classes.invisibleSeparator} />
-      </Fragment>
-    ));
+          <hr className={classes.invisibleSeparator} />
+          <PanelDetails panelId={panel.panelId} />
+          <hr className={classes.invisibleSeparator} />
+        </Fragment>
+      ));
+    }
+
     return (
       <Fragment>
         <MyButton
