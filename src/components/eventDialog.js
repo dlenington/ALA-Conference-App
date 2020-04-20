@@ -49,6 +49,8 @@ class EventDialog extends Component {
     if (this.props.openDialog) {
       this.handleOpen();
     }
+    // console.log(this.props)
+    this.props.getEvent(this.props.eventId);
   }
   handleOpen = () => {
     let oldPath = window.location.pathname;
@@ -76,8 +78,29 @@ class EventDialog extends Component {
       event: { panels },
     } = this.props;
 
-    if (panels) {
-    }
+    const dialogMarkup = panels.map((panel) => (
+      <Fragment>
+        <Grid container spacing={2}>
+          <Grid item sm={7}>
+            <Typography color="primary" variant="h5">
+              {panel.section}
+            </Typography>
+            <Typography color="textSecondary" variant="h6">
+              {panel.title}
+            </Typography>
+            <Typography color="textSecondary" variant="body2">
+              {panel.venue}
+            </Typography>
+            <Typography color="textSecondary" variant="body2">
+              Chair: {panel.chair}
+            </Typography>
+          </Grid>
+        </Grid>
+        <hr className={classes.invisibleSeparator} />
+        <PanelDetails panelId={panel.panelId} />
+        <hr className={classes.invisibleSeparator} />
+      </Fragment>
+    ));
 
     return (
       <Fragment>
@@ -113,7 +136,7 @@ class EventDialog extends Component {
   }
 }
 EventDialog.propTypes = {
-  // getEvent: PropTypes.func.isRequired,
+  getEvent: PropTypes.func.isRequired,
   // eventId: PropTypes.string.isRequired,
 };
 

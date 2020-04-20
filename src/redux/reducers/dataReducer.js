@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   events: [],
-  event: {},
+  event: { panels: [] },
   loading: false,
 };
 
