@@ -27,7 +27,7 @@ class Event extends Component {
   state = {};
 
   componentDidMount() {
-    this.props.getEvent(this.props.event.eventId);
+    // this.props.getEvent(this.props.event.eventId);
   }
 
   render() {
