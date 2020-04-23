@@ -9,25 +9,27 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 //Redux Stuff
 import { connect } from "react-redux";
-import { likeEvent, unlikeEvent } from "../../redux/actions/dataActions";
+import { likeEvent, unlikeEvent } from "../redux/actions/dataActions";
 
 class FavoriteButton extends Component {
   state = {};
+  likedEvent = () => {
+    return (
+      this.props.user.likes &&
+      this.props.user.likes.find((like) => like.panelId === this.props.panelId)
+    );
+  };
+
+  likeEvent = () => {
+    this.props.likeEvent(this.props.panelId);
+  };
+  unlikeEvent = () => {
+    this.props.unlikeEvent(this.props.panelId);
+  };
 
   render() {
     const { authenticated } = this.props.user;
-    likedEvent = () => {
-      return (
-        this.props.user.likes &&
-        this.props.user.likes.find(
-          (like) => like.eventId === this.props.eventId
-        )
-      );
-    };
 
-    likeEvent = () => {
-      this.props.likeEvent(this.props.eventId);
-    };
     const favoriteButton = !authenticated ? (
       <Link to="/login">
         <MyButton tip="Favorite">
@@ -36,10 +38,10 @@ class FavoriteButton extends Component {
       </Link>
     ) : this.likedEvent() ? (
       <MyButton tip="Undo like" onClick={this.unlikeEvent}>
-        <FavoriteBorder color="primary" />
+        <FavoriteIcon color="primary" />
       </MyButton>
     ) : (
-      <MyButton itp="Like" onClick={this.likeEvent}>
+      <MyButton tip="Like" onClick={this.likeEvent}>
         <FavoriteBorder color="primary" />
       </MyButton>
     );
@@ -50,7 +52,6 @@ class FavoriteButton extends Component {
 
 FavoriteButton.propTypes = {
   user: PropTypes.object.isRequired,
-  eventId: PropTypes.string.isRequired,
   panelId: PropTypes.string.isRequired,
   likeEvent: PropTypes.func.isRequired,
   unlikeEvent: PropTypes.func.isRequired,

@@ -56,7 +56,7 @@ export const likeEvent = (eventId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const unlikePost = (eventId) => (dispatch) => {
+export const unlikeEvent = (eventId) => (dispatch) => {
   axios
     .get(`/events/${eventId}/unlike`)
     .then((res) => {
