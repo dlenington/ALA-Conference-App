@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import MyButton from "../util/MyButton";
 
 //Icons
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -12,15 +13,28 @@ import { likeEvent, unlikeEvent } from "../../redux/actions/dataActions";
 
 class FavoriteButton extends Component {
   state = {};
+
   render() {
     const { authenticated } = this.props.user;
+    likedEvent = () => {
+      return (
+        this.props.user.likes &&
+        this.props.user.likes.find(
+          (like) => like.eventId === this.props.eventId
+        )
+      );
+    };
+
+    likeEvent = () => {
+      this.props.likeEvent(this.props.eventId);
+    };
     const favoriteButton = !authenticated ? (
       <Link to="/login">
         <MyButton tip="Favorite">
           <FavoriteBorder color="primary" />
         </MyButton>
       </Link>
-    ) : this.likedPainting() ? (
+    ) : this.likedEvent() ? (
       <MyButton tip="Undo like" onClick={this.unlikeEvent}>
         <FavoriteBorder color="primary" />
       </MyButton>
