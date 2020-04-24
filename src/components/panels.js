@@ -34,6 +34,7 @@ class Panels extends Component {
             <Typography color="textSecondary" variant="body2">
               Chair: {panel.chair}
             </Typography>
+            //Why does this not show
             <FavoriteButton panelId={panel.panelId} />
           </Grid>
         </Grid>
