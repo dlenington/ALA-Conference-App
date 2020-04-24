@@ -22,7 +22,8 @@ class EventDetails extends Component {
   }
 
   render() {
-    const { event, eventIdParam } = this.state;
+    const { eventIdParam } = this.state;
+    const { event } = this.props;
 
     const eventMarkup =
       event === null ? (
@@ -41,12 +42,12 @@ EventDetails.propTypes = {
   getEvent: PropTypes.func.isRequired,
 };
 
-// const mapStateToProps = (state) => ({
-//   event: state.data.event
-// });
+const mapStateToProps = (state) => ({
+  event: state.data.event,
+});
 
 const mapActionsToProps = {
   getEvent,
 };
 
-export default connect(mapActionsToProps)(EventDetails);
+export default connect(mapStateToProps, mapActionsToProps)(EventDetails);
