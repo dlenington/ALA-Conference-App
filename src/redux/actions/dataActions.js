@@ -43,6 +43,7 @@ export const getEvent = (eventId) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+//TODO: Implement set authorization header
 
 export const likeEvent = (eventId) => (dispatch) => {
   axios
