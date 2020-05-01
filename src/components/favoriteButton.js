@@ -48,7 +48,7 @@ class FavoriteButton extends Component {
       </MyButton>
     );
 
-    return favoriteButton;
+    return <div>Button</div>;
   }
 }
 

@@ -33,9 +33,9 @@ class Panels extends Component {
             </Typography>
             <Typography color="textSecondary" variant="body2">
               Chair: {panel.chair}
+              <FavoriteButton panelId={panel.panelId} />
             </Typography>
             //Why does this not show
-            <FavoriteButton panelId={panel.panelId} />
           </Grid>
         </Grid>
         <hr className={classes.invisibleSeparator} />
