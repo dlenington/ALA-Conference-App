@@ -14,10 +14,12 @@ import { likeEvent, unlikeEvent } from "../redux/actions/dataActions";
 class FavoriteButton extends Component {
   state = {};
   likedEvent = () => {
-    return (
+    if (
       this.props.user.likes &&
       this.props.user.likes.find((like) => like.panelId === this.props.panelId)
-    );
+    )
+      return true;
+    else return false;
   };
 
   likeEvent = () => {
