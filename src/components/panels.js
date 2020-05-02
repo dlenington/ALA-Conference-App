@@ -33,7 +33,6 @@ class Panels extends Component {
             </Typography>
             <Typography color="textSecondary" variant="body2">
               Chair: {panel.chair}
-              <FavoriteButton panelId={panel.panelId}></FavoriteButton>
             </Typography>
             //Why does this not show
           </Grid>
@@ -43,7 +42,11 @@ class Panels extends Component {
         <hr className={classes.invisibleSeparator} />
       </Fragment>
     ));
-    return <div>{dialogMarkup}</div>;
+    return (
+      <div>
+        <FavoriteButton />
+      </div>
+    );
   }
 }
 

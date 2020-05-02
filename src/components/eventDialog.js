@@ -5,6 +5,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "./myButton";
 import PanelDetails from "./panelDetails";
 import Panels from "./panels";
+import FavoriteButton from "./favoriteButton";
 
 //Mui stuff
 import Button from "@material-ui/core/Button";
@@ -90,6 +91,7 @@ class EventDialog extends Component {
             <Typography color="textSecondary" variant="body2">
               Chair: {panel.chair}
             </Typography>
+            <FavoriteButton />
           </Grid>
         </Grid>
         <hr className={classes.invisibleSeparator} />
