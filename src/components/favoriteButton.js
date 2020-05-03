@@ -30,6 +30,7 @@ class FavoriteButton extends Component {
   };
 
   render() {
+    //TODO: implement SET_AUTHENTICATED action
     const { authenticated } = this.props.user;
 
     const favoriteButton = !authenticated ? (
