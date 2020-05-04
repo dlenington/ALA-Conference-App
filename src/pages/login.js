@@ -9,6 +9,10 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+//Redux stuff
+import {connect} from "react-redux";
+import {loginUser} from "../redux/actions/userActions";
+
 const styles = theme => ({
   ...theme.spreadThis,
   form: {
@@ -30,20 +34,20 @@ class Login extends Component {
     errors: {}
   };
 
-  loginUser = userData => {
-    axios
-      .post("/login", userData)
-      .then(res => {
-        const FBIdToken = `Bearer ${res.data.token}`;
-        localStorage.setItem("FBIdToken", FBIdToken);
-        axios.defaults.headers.common["Authorization"] = FBIdToken;
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        this.setState({
-          errors: err.response.data
-        });
-      });
+  // loginUser = userData => {
+  //   axios
+  //     .post("/login", userData)
+  //     .then(res => {
+  //       const FBIdToken = `Bearer ${res.data.token}`;
+  //       localStorage.setItem("FBIdToken", FBIdToken);
+  //       axios.defaults.headers.common["Authorization"] = FBIdToken;
+  //       this.props.history.push("/");
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         errors: err.response.data
+  //       });
+  //     });
   };
   handleSubmit = event => {
     event.preventDefault();
