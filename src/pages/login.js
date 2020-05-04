@@ -34,6 +34,19 @@ class Login extends Component {
     errors: {}
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.loginUser(userData, this.props.history);
+  };
+
+  handleChange = event => {
+    
+  }
+
   // loginUser = userData => {
   //   axios
   //     .post("/login", userData)
