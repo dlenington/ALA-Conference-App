@@ -10,42 +10,44 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 //Redux stuff
-import {connect} from "react-redux";
-import {loginUser} from "../redux/actions/userActions";
+import { connect } from "react-redux";
+import { loginUser } from "../redux/actions/userActions";
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
   form: {
-    textAlign: "center"
+    textAlign: "center",
   },
   textField: {
-    margin: "10px auto 10px auto"
+    margin: "10px auto 10px auto",
   },
   button: {
     marginTop: 20,
-    position: "relative"
-  }
+    position: "relative",
+  },
 });
 
 class Login extends Component {
   state = {
     email: "",
     password: "",
-    errors: {}
+    errors: {},
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const userData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
     this.props.loginUser(userData, this.props.history);
   };
 
-  handleChange = event => {
-    
-  }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
   // loginUser = userData => {
   //   axios
@@ -61,21 +63,7 @@ class Login extends Component {
   //         errors: err.response.data
   //       });
   //     });
-  };
-  handleSubmit = event => {
-    event.preventDefault();
-    const userData = {
-      email: this.state.email,
-      password: this.state.password
-    };
-    this.loginUser(userData);
-  };
-
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+  // };
 
   render() {
     const { classes } = this.props;
