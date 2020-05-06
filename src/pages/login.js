@@ -68,7 +68,7 @@ class Login extends Component {
   render() {
     const {
       classes,
-      UI: { loading },
+      // UI: { loading },
     } = this.props;
     const { errors } = this.state;
     return (
@@ -128,13 +128,16 @@ Login.propTypes = {
   UI: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user,
-  UI: state.UI
+  UI: state.UI,
 });
 
 const mapActionsToProps = {
-  loginUser
+  loginUser,
 };
 
-export default connect(mapStateToProps, mapActionswithStyles(styles)(Login);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Login));
