@@ -128,4 +128,13 @@ Login.propTypes = {
   UI: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Login);
+const mapStateToProps = state => ({
+  user: state.user,
+  UI: state.UI
+});
+
+const mapActionsToProps = {
+  loginUser
+};
+
+export default connect(mapStateToProps, mapActionswithStyles(styles)(Login);
