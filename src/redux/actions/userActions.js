@@ -1,8 +1,10 @@
 import {
   SET_USER,
   SET_ERRORS,
+  SET_ADMIN,
   CLEAR_ERRORS,
   LOADING_UI,
+  LOADING_USER,
   SET_UNAUTHENTICATED,
 } from "../types";
 
@@ -56,9 +58,9 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 };
 
 const setAuthorizationHeader = (token) => {
-  const FBIdtoken = `Bearer ${token}`;
+  const FBIdToken = `Bearer ${token}`;
   localStorage.setItem("FBIToken", FBIdToken);
-  axios.defaults.headers.common["Authorization"] = FBIdtoken;
+  axios.defaults.headers.common["Authorization"] = FBIdToken;
 };
 
 export const setAdmin = () => (dispatch) => {
