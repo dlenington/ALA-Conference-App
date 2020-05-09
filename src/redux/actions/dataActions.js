@@ -45,9 +45,9 @@ export const getEvent = (eventId) => (dispatch) => {
 };
 //TODO: Implement set authorization header
 
-export const likeEvent = (eventId) => (dispatch) => {
+export const likeEvent = (panelId) => (dispatch) => {
   axios
-    .get(`/events/${eventId}/like`)
+    .get(`/panels/${panelId}/like`)
     .then((res) => {
       dispatch({
         type: LIKE_EVENT,
@@ -57,9 +57,9 @@ export const likeEvent = (eventId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const unlikeEvent = (eventId) => (dispatch) => {
+export const unlikeEvent = (panelId) => (dispatch) => {
   axios
-    .get(`/events/${eventId}/unlike`)
+    .get(`/panels/${panelId}/unlike`)
     .then((res) => {
       dispatch({
         type: UNLIKE_EVENT,
