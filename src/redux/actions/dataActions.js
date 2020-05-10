@@ -47,7 +47,7 @@ export const getEvent = (eventId) => (dispatch) => {
 
 export const likeEvent = (panelId) => (dispatch) => {
   axios
-    .get(`/panels/${panelId}/like`)
+    .get(`/panel/${panelId}/like`)
     .then((res) => {
       dispatch({
         type: LIKE_EVENT,
@@ -59,7 +59,7 @@ export const likeEvent = (panelId) => (dispatch) => {
 
 export const unlikeEvent = (panelId) => (dispatch) => {
   axios
-    .get(`/panels/${panelId}/unlike`)
+    .get(`/panel/${panelId}/unlike`)
     .then((res) => {
       dispatch({
         type: UNLIKE_EVENT,

@@ -39,11 +39,11 @@ class FavoriteButton extends Component {
         </MyButton>
       </Link>
     ) : this.likedEvent() ? (
-      <MyButton tip="Undo like" onClick={this.unlikeEvent}>
+      <MyButton tip="Undo favorite" onClick={this.unlikeEvent}>
         <FavoriteIcon color="primary" />
       </MyButton>
     ) : (
-      <MyButton tip="Like" onClick={this.likeEvent}>
+      <MyButton tip="Favorite" onClick={this.likeEvent}>
         <FavoriteBorder color="primary" />
       </MyButton>
     );
