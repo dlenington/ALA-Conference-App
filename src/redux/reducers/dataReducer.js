@@ -31,6 +31,7 @@ export default function (state = initialState, action) {
         event: action.payload,
       };
     case LIKE_EVENT:
+    // Need to switch this reducer to reference panels instead of events
     case UNLIKE_EVENT:
       let index = state.events.findIndex(
         (event) => event.eventId === action.payload.eventId
