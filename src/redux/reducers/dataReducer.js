@@ -31,15 +31,19 @@ export default function (state = initialState, action) {
         event: action.payload,
       };
     //Purpose of these reducers are to update the like count on events. This function is not necessary for this application.
+    //Need to add the panelId to the likes array in redux store.
+    //might want to condsider updating a like field on each panel with the userId instead. This would allow ease of locating and deleting like.
     case LIKE_EVENT:
     case UNLIKE_EVENT:
-      let index = state.events.findIndex(
-        (event) => event.eventId === action.payload.eventId
-      );
-      state.events[index] = action.payload;
-      if (state.event.eventId === action.payload.eventId) {
-        state.event.likeCount = action.payload.likeCount;
-      }
+      // let index = state.events.findIndex(
+      //   (event) => event.eventId === action.payload.eventId
+      // );
+      // state.events[index] = action.payload;
+      // if (state.event.eventId === action.payload.eventId) {
+      //   state.event.likeCount = action.payload.likeCount;
+      // }
+
+      state.user.likes.push(action.payload);
       return {
         ...state,
       };
