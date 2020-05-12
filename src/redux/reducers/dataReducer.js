@@ -30,10 +30,8 @@ export default function (state = initialState, action) {
         ...state,
         event: action.payload,
       };
+    //Purpose of these reducers are to update the like count on events. This function is not necessary for this application.
     case LIKE_EVENT:
-    // Need to switch this reducer to reference panels instead of events
-    //Must find out what the value of payload is that is passed here.
-    //May need to change response of likeEvent and unlikeEvent google cloud functions
     case UNLIKE_EVENT:
       let index = state.events.findIndex(
         (event) => event.eventId === action.payload.eventId
