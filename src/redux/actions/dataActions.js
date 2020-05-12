@@ -43,8 +43,9 @@ export const getEvent = (eventId) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
-//TODO: Implement set authorization header
 
+//This function calls the like http endpoint, which adds the panel to the likes collection in firebase alongside the userId.
+//What is the purpose of this as a redux action, when the likes are stored in the database? Nothing in state to update?
 export const likeEvent = (panelId) => (dispatch) => {
   axios
     .get(`/panel/${panelId}/like`)
