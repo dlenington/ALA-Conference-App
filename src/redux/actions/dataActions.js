@@ -50,6 +50,8 @@ export const likeEvent = (panelId) => (dispatch) => {
   axios
     .get(`/panel/${panelId}/like`)
     .then((res) => {
+      //need to import function below, or create new function here that will refresh the likes from the database
+      // dispatch(getUserData());
       dispatch({
         type: LIKE_EVENT,
         payload: res.data,
