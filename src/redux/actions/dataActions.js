@@ -44,13 +44,12 @@ export const getEvent = (eventId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-//This function calls the like http endpoint, which adds the panel to the likes collection in firebase alongside the userId.
-//What is the purpose of this as a redux action, when the likes are stored in the database? Nothing in state to update?
+//This function calls the 'like' http endpoint, which adds the panel to the likes collection in firebase alongside the userId.
 export const likeEvent = (panelId) => (dispatch) => {
   axios
     .get(`/panel/${panelId}/like`)
     .then((res) => {
-      //need to import function below, or create new function here that will refresh the likes from the database
+      //Need to import function below, or create new function here that will refresh the likes from the database
       // dispatch(getUserData());
       dispatch({
         type: LIKE_EVENT,

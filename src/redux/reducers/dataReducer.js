@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
         ...state,
         event: action.payload,
       };
-    //Purpose of these reducers are to update the like count on events. This function is not necessary for this application.
+
     //Need to add the panelId to the likes array for the user in redux store.
 
     //Alternatively, when the like or unlike event is called, we can call SET_USER to reset the likes array for the user.
