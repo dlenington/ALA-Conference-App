@@ -4,6 +4,7 @@ import {
   UNLIKE_EVENT,
   CLEAR_ERRORS,
   SET_EVENT,
+  SET_LIKES,
 } from "../types";
 import axios from "axios";
 

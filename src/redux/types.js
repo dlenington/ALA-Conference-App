@@ -16,3 +16,4 @@ export const SET_EVENTS = "SET_EVENTS";
 export const SET_EVENT = "SET_EVENT";
 export const LIKE_EVENT = "LIKE_EVENT";
 export const UNLIKE_EVENT = "UNLIKE_EVENT";
+export const SET_LIKES = "SET_LIKES";

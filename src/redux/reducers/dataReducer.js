@@ -4,6 +4,7 @@ import {
   UNLIKE_EVENT,
   LOADING_DATA,
   SET_EVENT,
+  SET_LIKES,
 } from "../types";
 
 const initialState = {
@@ -48,6 +49,10 @@ export default function (state = initialState, action) {
 
       return {
         ...state,
+      };
+    case SET_LIKES:
+      return {
+      state.user.likes[...action.payload.likes]
       };
     default:
       return state;
