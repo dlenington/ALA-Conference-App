@@ -5,27 +5,27 @@ import {
   LOADING_USER,
   LIKE_EVENT,
   UNLIKE_EVENT,
-  SET_ADMIN
+  SET_ADMIN,
 } from "../types";
 
 const initialState = {
   authenticated: false,
   loading: false,
   credentials: {},
-  likes: []
+  likes: [],
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case SET_ADMIN:
       return {
         ...state,
-        admin: true
+        admin: true,
       };
     case SET_AUTHENTICATED:
       return {
         ...state,
-        authenticated: true
+        authenticated: true,
       };
     case SET_UNAUTHENTICATED:
       return initialState;
@@ -33,12 +33,12 @@ export default function(state = initialState, action) {
       return {
         authenticated: true,
         loading: false,
-        ...action.payload
+        ...action.payload,
       };
     case LOADING_USER:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case LIKE_EVENT:
       return {
@@ -46,17 +46,16 @@ export default function(state = initialState, action) {
         likes: [
           ...state.likes,
           {
-            userHandle: state.credentials.handle,
-            eventId: action.payload.eventId
-          }
-        ]
+            panelId: action.payload.panelId,
+          },
+        ],
       };
     case UNLIKE_EVENT:
       return {
         ...state,
         likes: state.likes.filter(
-          like => like.eventId !== action.payload.postId
-        )
+          (like) => like.eventId !== action.payload.eventId
+        ),
       };
 
     default:
