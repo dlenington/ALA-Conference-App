@@ -76,11 +76,11 @@ export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };
 
-export const getLikes = () => (dispatch) => {
-  axios
-    .get("/likes")
-    .then((res) => {
-      dispatch({ type: SET_LIKES });
-    })
-    .catch((err) => console.log(err));
-};
+// export const getLikes = () => (dispatch) => {
+//   axios
+//     .get("/likes")
+//     .then((res) => {
+//       dispatch({ type: SET_LIKES });
+//     })
+//     .catch((err) => console.log(err));
+// };
