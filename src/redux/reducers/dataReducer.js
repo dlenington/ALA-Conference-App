@@ -1,11 +1,4 @@
-import {
-  SET_EVENTS,
-  LIKE_EVENT,
-  UNLIKE_EVENT,
-  LOADING_DATA,
-  SET_EVENT,
-  SET_LIKES,
-} from "../types";
+import { SET_EVENTS, LOADING_DATA, SET_EVENT } from "../types";
 
 const initialState = {
   events: [],
