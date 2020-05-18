@@ -91,7 +91,7 @@ class EventDialog extends Component {
             <Typography color="textSecondary" variant="body2">
               Chair: {panel.chair}
             </Typography>
-            <FavoriteButton />
+            <FavoriteButton panelId={panel.panelId} />
           </Grid>
         </Grid>
         <hr className={classes.invisibleSeparator} />
