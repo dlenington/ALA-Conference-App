@@ -13,10 +13,11 @@ import store from "./redux/store";
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import Favorites from "./pages/favorites";
 import EventDetails from "./components/eventDetails";
 
+//CSS
 import "./App.css";
-import Favorites from "./pages/favorites";
 
 const theme = createMuiTheme(themeFile);
 
@@ -32,8 +33,8 @@ class App extends Component {
               <Route exact path="/" component={home} />
               <Route exact path="/login" component={login} />
               <Route exact path="/signup" component={signup} />
-              <Route exact path="/events/:eventId" component={EventDetails} />
               <Route exact path="/favorites" component={Favorites} />
+              <Route exact path="/events/:eventId" component={EventDetails} />
             </Switch>
           </main>
         </Provider>
