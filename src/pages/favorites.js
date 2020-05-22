@@ -26,7 +26,7 @@ class Favorites extends Component {
               <CardContent>
                 <Typography variant="h5">Student/Parent Survey</Typography>
                 <Chart
-                  width={"500px"}
+                  width={"auto"}
                   height={"300px"}
                   chartType="Bar"
                   loader={<div>Loading Chart</div>}
