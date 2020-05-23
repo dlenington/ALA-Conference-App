@@ -41,7 +41,6 @@ class Favorites extends Component {
                     // Material design options
                     chart: {
                       title: "Company Performance",
-                      subtitle: "Sales, Expenses, and Profit: 2014-2017",
                     },
                   }}
                   // For tests
